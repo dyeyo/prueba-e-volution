@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
   if (user) {
     const passIguales = bcrypt.compareSync(req.body.password, user.password)
     if (passIguales) {
-      res.json({ success: createToken(user) })
+      res.json({ status: 200, success: createToken(user) })
     } else {
       res.json({ error: 'Datos invalidos' })
     }
@@ -37,6 +37,7 @@ router.post('/login', async (req, res) => {
 const createToken = (user) => {
   const payload = {
     userId: user.id,
+    name: user.name,
     createdAt: moment().unix(),
     expiresAt: moment().add(5, 'minutes').unix(),
   }

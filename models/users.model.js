@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-  const User = sequelize.define(
+  const Users = sequelize.define(
     'user',
     {
       id: {
@@ -10,13 +10,9 @@ module.exports = (sequelize, type) => {
       'name': type.STRING,
       'email': type.STRING,
       'password': type.STRING(150)
-    }
-  )
-
-  User.associate = function (models) {
-    User.hasMany(models.Task);
-  };
-
-  return User;
-
+    })
+  return Users;
+  // Test.hasMany(models.Question, {
+  //   foreignKey: 'userId',
+  // });
 }

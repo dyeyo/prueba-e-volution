@@ -2,12 +2,13 @@ const router = require('express').Router()
 const { Task } = require('../../db')
 
 router.get('/', async (req, res) => {
-  // const tasks = await Task.findAll();
-  const tasks = await Task.findAll({
-    where: {
-      userId: req.userId
-    }
-  });
+  const tasks = await Task.findAll();
+  //console.log(req);
+  // const tasks = await Task.findAll({
+  //   where: {
+  //     userId: userId
+  //   }
+  // });
   res.json(tasks)
 })
 

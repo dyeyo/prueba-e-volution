@@ -13,13 +13,5 @@ module.exports = (sequelize, type) => {
       'userId': type.INTEGER,
     }
   )
-
-  Task.associate = function (models) {
-    Task.belongsTo(models.Task, {
-      foreignKey: 'userId',
-      onDelete: 'cascade',
-    });
-  };
-
   return Task;
 } 
