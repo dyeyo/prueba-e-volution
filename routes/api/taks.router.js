@@ -1,14 +1,17 @@
 const router = require('express').Router()
 const { Task } = require('../../db')
+const jwt = require('jwt-simple');
+const middelware = require('../middelware');
+let payload = {}
 
 router.get('/', async (req, res) => {
+  // let payload = {}
+  // const token = req.headers['authorization'];
+  // payload = jwt.decode(token, 'evolution')
+  // req.userId = payload.userId
+  // console.log(req.userId);
+
   const tasks = await Task.findAll();
-  //console.log(req);
-  // const tasks = await Task.findAll({
-  //   where: {
-  //     userId: userId
-  //   }
-  // });
   res.json(tasks)
 })
 

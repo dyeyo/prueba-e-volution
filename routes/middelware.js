@@ -3,10 +3,10 @@ const moment = require('moment')
 
 
 const checkedToken = (req, res, next) => {
-  if (!req.headers['user-token']) {
+  if (!req.headers['authorization']) {
     return res.json({ error: 'Not exists token in headers' })
   }
-  const token = req.headers['user-token']
+  const token = req.headers['authorization']
   let payload = {}
   try {
     payload = jwt.decode(token, 'evolution')
